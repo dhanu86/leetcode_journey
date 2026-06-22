@@ -363,3 +363,64 @@ class Solution:
                 i+=1
             j+=1
         return i==len(s)
+
+30.https://leetcode.com/problems/shortest-distance-to-a-character/
+
+class Solution:
+    def shortestToChar(self, s: str, c: str) -> List[int]:
+        p=[]
+        for i in range(len(s)):
+            if s[i]==c:
+                p.append(i)
+        a=[]
+        for i in range(len(s)):
+            m=float('inf')
+            for pos in p:
+                m=min(m,abs(i-pos))
+            a.append(m)
+        return a
+    
+31.https://leetcode.com/problems/container-with-most-water/
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        a=0
+        for i in range(len(height)):
+            for j in range(i+1,len(height)):
+                area=min(height[i],height[j])*(j-i)
+                a=max(a,area)
+        return a
+    
+32.https://leetcode.com/problems/sort-colors/
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        n=len(nums)
+        for i in range(n):
+            for j in range(n-i-1):
+                if nums[j]>nums[j+1]:
+                    nums[j],nums[j+1]=nums[j+1],nums[j]
+
+33.https://leetcode.com/problems/assign-cookies/
+
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+       g.sort()
+       s.sort()
+       i=0
+       j=0
+       while i<len(g) and j<len(s):
+            if s[j]>=g[i]:
+                i+=1
+            j+=1
+       return i
+    
+34.https://leetcode.com/problems/merge-sorted-array/
+
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        a=nums1[:m]+nums2
+        a.sort()
+        for i in range(m+n):
+            nums1[i]=a[i]
+        
