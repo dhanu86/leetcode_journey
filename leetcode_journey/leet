@@ -424,3 +424,27 @@ class Solution:
         for i in range(m+n):
             nums1[i]=a[i]
         
+35.https://leetcode.com/problems/majority-element/
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        nums.sort()
+        return nums[len(nums)//2]
+    
+36.https://leetcode.com/problems/valid-anagram/
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s)==sorted(t)
+        
+                
+37.https://leetcode.com/problems/find-the-difference/
+
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s=sorted(s)
+        t=sorted(t)
+        for i in range(len(s)):
+            if s[i] != t[i]:
+                return t[i]
+        return t[-1]
